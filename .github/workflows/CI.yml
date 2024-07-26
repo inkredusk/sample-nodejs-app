@@ -34,4 +34,4 @@ jobs:
         token: ${{ secrets.PAT }}
         repository: ${{ github.actor }}/argocd-nodejs-app-config
         event-type: new-image
-        client-payload: '{"image": "${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
+        client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
