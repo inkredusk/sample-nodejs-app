@@ -29,10 +29,12 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}
 
-    - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v3
+    - name: Update Image Version
+      id: imgupd
+      uses: mikefarah/yq@master
       with:
-        token: ${{ secrets.PAT }}
-        repository: inkredusk/sample-nodejs-app
-        event-type: new-image
-        client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
+          cmd: yq eval '.spec.template.spec.containers[0].image = "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"' -i node-app/deployment.yaml
+        
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+          commit_message: Apply image name changes
