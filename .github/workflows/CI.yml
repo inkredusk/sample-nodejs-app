@@ -33,6 +33,6 @@ jobs:
       uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ secrets.PAT }}
-        repository: https://github.com/inkredusk/sample-nodejs-app
+        repository: inkredusk/sample-nodejs-app
         event-type: new-image
         client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
