@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'develop'
   workflow_dispatch:
 env:
   IMAGE_NAME: examplenodejsapp-dev
@@ -32,6 +33,6 @@ jobs:
       uses: peter-evans/repository-dispatch@v3
       with:
         token: ${{ secrets.PAT }}
-        repository: ${{ github.actor }}/argocd-nodejs-app-config
+        repository: https://github.com/inkredusk/sample-nodejs-app
         event-type: new-image
         client-payload: '{"image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ github.run_number }}"}'
