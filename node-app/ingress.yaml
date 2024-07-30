@@ -6,20 +6,15 @@ metadata:
   name: ingress-superadmin
   namespace: default
 spec:
-  defaultBackend: null
   ingressClassName: nginx
   rules:
     - host: apiv6.localginie.com
       http:
         paths:
-          - backend:
-              port:
-                number: 80
+          - path: /
+            pathType: Prefix
+            backend:
               service:
                 name: okaygeniesuper
-            path: /
-            pathType: Prefix
-  service:
-    name: okaygeniesuper
-    port:
-      number: 80
+                port:
+                  number: 80
