@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: sample-nodejs-app
-  namespace: argocd
+  namespace: default
 spec:
   project: default
 
   source:
     repoURL: https://github.com/inkredusk/sample-nodejs-app.git
-    targetRevision: HEAD
+    targetRevision: ingress-test
     path: node-app
   destination: 
     server: https://kubernetes.default.svc
