@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: ingress-superadmin
   spec:
+    ingressClassName: nginx
     rules:
       - host: apiv6.localginie.com
         http:
@@ -14,4 +15,4 @@ metadata:
                   name: okaygeniesuper
                 port:
                   number: 80
-    ingressClassName: nginx
+    
