@@ -1,22 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  labels:
+    app.kubernetes.io/instance: sample-nodejs-app
   name: ingress-superadmin
+  namespace: default
 spec:
-    ingressClassName: nginx
-    defaultBackend:
-    service:
-      name: okaygeniesuper
-      port:
-        number: 80
-    rules:
-      - host: apiv6.localginie.com
-        http:
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: okaygeniesuper
-                port:
-                  number: 80
+  defaultBackend: null
+  ingressClassName: nginx
+  rules:
+    - host: apiv6.localginie.com
+      http:
+        paths:
+          - backend:
+              port:
+                number: 80
+              service:
+                name: okaygeniesuper
+            path: /
+            pathType: Prefix
+  service:
+    name: okaygeniesuper
+    port:
+      number: 80
