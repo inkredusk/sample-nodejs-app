@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: karanbalkar90/examplenodejsapp-dev:21
+          image: karanbalkar90/examplenodejsapp-dev:22
           ports:
             - containerPort: 3000
