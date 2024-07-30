@@ -5,6 +5,7 @@ on:
     branches:
       - 'main'
       - 'develop'
+      - 'ingress-test'
   workflow_dispatch:
 env:
   IMAGE_NAME: examplenodejsapp-dev

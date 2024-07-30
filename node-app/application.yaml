@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: node-app-argo-application
+  name: sample-nodejs-app
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/inkredusk/argocd-nodejs-app-config.git
+    repoURL: https://github.com/inkredusk/sample-nodejs-app.git
     targetRevision: HEAD
     path: node-app
   destination: 
