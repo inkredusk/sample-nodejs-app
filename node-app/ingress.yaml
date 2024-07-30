@@ -2,9 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-superadmin
-  spec:
+spec:
     ingressClassName: nginx
-    defaultBackend: null
+    defaultBackend:
     service:
       name: okaygeniesuper
       port:
